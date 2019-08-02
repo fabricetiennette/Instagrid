@@ -8,24 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		2C16299022D53DDF006C2867 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16298F22D53DDF006C2867 /* AppDelegate.swift */; };
-		2C16299222D53DDF006C2867 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16299122D53DDF006C2867 /* ViewController.swift */; };
+		2C16299222D53DDF006C2867 /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C16299122D53DDF006C2867 /* GridViewController.swift */; };
 		2C16299522D53DDF006C2867 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C16299322D53DDF006C2867 /* Main.storyboard */; };
 		2C16299722D53DE0006C2867 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C16299622D53DE0006C2867 /* Assets.xcassets */; };
 		2C16299A22D53DE0006C2867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C16299822D53DE0006C2867 /* LaunchScreen.storyboard */; };
 		2C30413D22D5408F00E26355 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C30413B22D5408F00E26355 /* Delm-Medium.otf */; };
 		2C30413E22D5408F00E26355 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C30413C22D5408F00E26355 /* ThirstySoftRegular.otf */; };
+		2CBD995D22E65B400041E177 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD995C22E65B400041E177 /* UIViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C16298C22D53DDF006C2867 /* Instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C16298F22D53DDF006C2867 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C16299122D53DDF006C2867 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C16299122D53DDF006C2867 /* GridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewController.swift; sourceTree = "<group>"; };
 		2C16299422D53DDF006C2867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C16299622D53DE0006C2867 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C16299922D53DE0006C2867 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C16299B22D53DE0006C2867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C30413B22D5408F00E26355 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		2C30413C22D5408F00E26355 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
+		2CBD995C22E65B400041E177 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +61,9 @@
 			isa = PBXGroup;
 			children = (
 				2C16298F22D53DDF006C2867 /* AppDelegate.swift */,
-				2C16299122D53DDF006C2867 /* ViewController.swift */,
+				2C16299122D53DDF006C2867 /* GridViewController.swift */,
 				2C16299322D53DDF006C2867 /* Main.storyboard */,
+				2CBD995C22E65B400041E177 /* UIViewExtension.swift */,
 				2C16299622D53DE0006C2867 /* Assets.xcassets */,
 				2C16299822D53DE0006C2867 /* LaunchScreen.storyboard */,
 				2C16299B22D53DE0006C2867 /* Info.plist */,
@@ -104,6 +107,11 @@
 		2C16298422D53DDF006C2867 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					1,
+					2,
+					3,
+				);
 				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Fabrice Etiennette";
@@ -151,7 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C16299222D53DDF006C2867 /* ViewController.swift in Sources */,
+				2CBD995D22E65B400041E177 /* UIViewExtension.swift in Sources */,
+				2C16299222D53DDF006C2867 /* GridViewController.swift in Sources */,
 				2C16299022D53DDF006C2867 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

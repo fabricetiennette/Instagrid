@@ -28,24 +28,18 @@ class GridViewController: UIViewController {
     @IBOutlet private weak var rightDownImageView: UIImageView!
     @IBOutlet private weak var rightDownButton: UIButton!
     
-    // Frame UI view
-    @IBOutlet private weak var leftTopView: UIView!
-    @IBOutlet private weak var rightTopView: UIView!
-    @IBOutlet private weak var leftDownView: UIView!
-    @IBOutlet private weak var rightDownView: UIView!
+    // Frame grid views table
+    @IBOutlet private var gridViews: [UIView]!
     
-    // Frame Selection Button
-    @IBOutlet private weak var firstButton: UIButton!
-    @IBOutlet private weak var secondButton: UIButton!
-    @IBOutlet private weak var thirdButton: UIButton!
+    // Frame Selection Button table
+    @IBOutlet private var groupButtons: [UIButton]!
     
+    // Main Frame view
     @IBOutlet private weak var photoFrameView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(gestureRecognizer:)))
-        swipeToShareStackView.isUserInteractionEnabled = true
         swipeToShareStackView.addGestureRecognizer(panGesture)
     }
 }
@@ -92,12 +86,14 @@ extension GridViewController: UIImagePickerControllerDelegate {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
+    // This method is use to display an image and set his button transperant
     func displayImage(image: UIImage, imageView: UIImageView, button: UIButton) {
         imageView.image = image
         button.alpha = 0.02
         button.isSelected = false
     }
     
+    // This method is use to pick the image and display in a ui image view
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
@@ -111,9 +107,7 @@ extension GridViewController: UIImagePickerControllerDelegate {
         } else if leftDownButton.isSelected  {
             displayImage(image: image, imageView: leftDownImageView, button: leftDownButton)
         }
-        
         picker.dismiss(animated: true, completion: nil)
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -122,52 +116,42 @@ extension GridViewController: UIImagePickerControllerDelegate {
     
     // MARK: - Swipe to share method
     
+    // This method is use to interact with the swipe to share stack view with a gesture
     @objc func dragged(gestureRecognizer: UIPanGestureRecognizer) {
         if gestureRecognizer.state == .began {
-            print("Began")
-        } else if  gestureRecognizer.state == .changed {
+        } else if gestureRecognizer.state == .changed {
             swipeToShareStackView.transform = CGAffineTransform(translationX: 0, y: -50)
-            print("changed")
         } else if gestureRecognizer.state == .ended {
-            UIStackView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping:  0.2, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            UIStackView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping:  0.5, initialSpringVelocity: 0.5, options: [], animations: {
                 self.swipeToShareStackView.transform = .identity
-                print("back!!")
             })
-            let imageToShare = photoFrameView.getImage()
-            let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
+            
+            let imageToShare = photoFrameView.getImage() // get the image from the photoFrameView
+            let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil) // share the image
             present(shareActivity, animated: true, completion: nil)
         }
     }
     
     // MARK: - Frame selection method
     
-    @IBAction func FrameSelect(_ sender: UIButton) {
+    //  This method is use to change frame when you tape on a button
+    @IBAction func frameSelection(_ sender: UIButton) {
+        groupButtons.forEach {$0.isSelected = false}
+        sender.isSelected = true
         
-        photoFrameView.flash()
-        
-        leftTopView.isHidden = false
-        leftDownView.isHidden = true
-        
-        switch sender {
-        case firstButton:
-            leftTopView.isHidden = true
-            leftDownView.isHidden = false
-            firstButton.isSelected = true
-            secondButton.isSelected = false
-            thirdButton.isSelected = false
-        case secondButton:
-            leftDownView.isHidden = true
-            firstButton.isSelected = false
-            secondButton.isSelected = true
-            thirdButton.isSelected = false
-        case thirdButton:
-            leftDownView.isHidden = false
-            leftTopView.isHidden = false
-            firstButton.isSelected = false
-            secondButton.isSelected = false
-            thirdButton.isSelected = true
+        switch sender.tag {
+        case 1:
+            gridViews[1].isHidden = true
+            gridViews[2].isHidden = false
+        case 2:
+            gridViews[1].isHidden = false
+            gridViews[2].isHidden = true
+        case 3:
+            gridViews[1].isHidden = false
+            gridViews[2].isHidden = false
         default:
             break;
         }
+        photoFrameView.flashAnimation() // Animate the photoFrameView when select a new frame
     }
 }

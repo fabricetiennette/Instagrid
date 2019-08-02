@@ -1,5 +1,5 @@
 //
-//  AnimationExtension.swift
+//  UIViewExtension.swift
 //  Instagrid
 //
 //  Created by Fabrice Etiennette on 22/07/2019.
@@ -11,9 +11,9 @@ import UIKit
 
 extension UIView {
     
-    func flash() {
-        
+    func flashAnimation() {
         let flash = CABasicAnimation(keyPath: "opacity")
+        
         flash.duration = 0.1
         flash.fromValue = 0.6
         flash.toValue = 0.1
@@ -25,6 +25,7 @@ extension UIView {
 }
 
 extension UIView {
+    
     func scale(by scale: CGFloat) {
         self.contentScaleFactor = scale
         for subview in self.subviews {
@@ -44,7 +45,6 @@ extension UIView {
         let image = renderer.image { rendererContext in
             self.layer.render(in: rendererContext.cgContext)
         }
-        
         return image
     }
 }
