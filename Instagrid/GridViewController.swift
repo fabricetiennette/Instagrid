@@ -39,10 +39,29 @@ class GridViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(dragged(gestureRecognizer:)))
-        swipeToShareStackView.addGestureRecognizer(panGesture)
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe(gestureRecognizer:)))
+        swipeGesture.direction = .up
+        swipeToShareStackView.addGestureRecognizer(swipeGesture)
+    }
+    
+    // MARK: - Swipe to share method
+    
+    // This method is use to interact with the swipe to share stack view with a gesture
+    @objc func swipe(gestureRecognizer: UISwipeGestureRecognizer) {
+        if gestureRecognizer.direction == .up {
+            swipeToShareStackView.transform = CGAffineTransform(translationX: 0, y: -60)
+            UIStackView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping:  0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+                self.swipeToShareStackView.transform = .identity
+            })
+            
+            let imageToShare = photoFrameView.getImage() // get the image from the photoFrameView
+            let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil) // share the image
+            present(shareActivity, animated: true, completion: nil)
+        }
     }
 }
+
+
 
 extension GridViewController: UINavigationControllerDelegate {}
 
@@ -50,19 +69,7 @@ extension GridViewController: UINavigationControllerDelegate {}
 extension GridViewController: UIImagePickerControllerDelegate {
     
     @IBAction func chooseImage(_ sender: UIButton) {
-        
-        switch sender {
-        case topLeftButton:
-            self.topLeftButton.isSelected = true
-        case topRightButton:
-            self.topRightButton.isSelected = true
-        case leftDownButton:
-            self.leftDownButton.isSelected = true
-        case rightDownButton:
-            self.rightDownButton.isSelected = true
-        default:
-            break;
-        }
+        buttonTapped(button: sender)
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -84,6 +91,16 @@ extension GridViewController: UIImagePickerControllerDelegate {
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    // This method is use to select the appropriate image view to place your picture
+    func buttonTapped(button: UIButton) {
+        switch button {
+        case button:
+            button.isSelected = true
+        default:
+            break;
+        }
     }
     
     // This method is use to display an image and set his button transperant
@@ -112,24 +129,6 @@ extension GridViewController: UIImagePickerControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - Swipe to share method
-    
-    // This method is use to interact with the swipe to share stack view with a gesture
-    @objc func dragged(gestureRecognizer: UIPanGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-        } else if gestureRecognizer.state == .changed {
-            swipeToShareStackView.transform = CGAffineTransform(translationX: 0, y: -50)
-        } else if gestureRecognizer.state == .ended {
-            UIStackView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping:  0.5, initialSpringVelocity: 0.5, options: [], animations: {
-                self.swipeToShareStackView.transform = .identity
-            })
-            
-            let imageToShare = photoFrameView.getImage() // get the image from the photoFrameView
-            let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil) // share the image
-            present(shareActivity, animated: true, completion: nil)
-        }
     }
     
     // MARK: - Frame selection method
