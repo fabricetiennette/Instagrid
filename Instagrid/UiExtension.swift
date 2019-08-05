@@ -48,3 +48,21 @@ extension UIView {
         return image
     }
 }
+
+extension UIView {
+    
+    func animateUiViewBack() {
+        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+            self.transform = .identity
+            self.alpha = 1
+        })
+    }
+}
+
+extension UIStackView {
+    func animateUiStackViewBack() {
+        UIStackView.animate(withDuration: 0.9, delay: 0.1, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+            self.transform = .identity
+        })
+    }
+}
