@@ -40,7 +40,7 @@ class GridViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe(gestureRecognizer:)))
-        swipeGesture.direction = .up
+        swipeGesture.direction = .up // swipe gesture only to up
         swipeToShareStackView.addGestureRecognizer(swipeGesture)
     }
     
@@ -49,19 +49,28 @@ class GridViewController: UIViewController {
     // This method is use to interact with the swipe to share stack view with a gesture
     @objc func swipe(gestureRecognizer: UISwipeGestureRecognizer) {
         if gestureRecognizer.direction == .up {
-            swipeToShareStackView.transform = CGAffineTransform(translationX: 0, y: -60)
-            UIStackView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping:  0.5, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
-                self.swipeToShareStackView.transform = .identity
+            UIStackView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+                self.swipeToShareStackView.transform = CGAffineTransform(translationX: 0, y:  -self.view.frame.width)
+            })
+            UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+                self.photoFrameView.transform = CGAffineTransform(translationX: 0, y:  -self.view.frame.width)
+                self.photoFrameView.alpha = 0
             })
             
             let imageToShare = photoFrameView.getImage() // get the image from the photoFrameView
             let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil) // share the image
+            shareActivity.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+                if completed {
+                    print("completed")
+                } else {
+                    self.swipeToShareStackView.animateUiStackViewBack()
+                    self.photoFrameView.animateUiViewBack()
+                }
+            }
             present(shareActivity, animated: true, completion: nil)
         }
     }
 }
-
-
 
 extension GridViewController: UINavigationControllerDelegate {}
 
