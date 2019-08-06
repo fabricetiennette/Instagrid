@@ -1,18 +1,14 @@
 # Project 4 : Instagrid 
 
-### Develop Instagrid : A photo editing application !
+### A photo editing application.
 
 **Instagrid**
--
-Instagrid allows you to combine multiple photos in a square format
-and share the result with your friends through your favourite apps.
 
--
-**1. Choice of layout between three frames**
--
-**2. Adding photos**
--
-**3. Swipe to share**
+    Instagrid allows you to combine multiple photos in a square format 
+    and share the result with your friends through your favourite apps.
 
+**. Choice of layout between three frames**
 
-------------------------------
+**. Adding photos**
+
+**. Swipe to share**
