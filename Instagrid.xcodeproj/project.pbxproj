@@ -14,7 +14,7 @@
 		2C16299A22D53DE0006C2867 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C16299822D53DE0006C2867 /* LaunchScreen.storyboard */; };
 		2C30413D22D5408F00E26355 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C30413B22D5408F00E26355 /* Delm-Medium.otf */; };
 		2C30413E22D5408F00E26355 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2C30413C22D5408F00E26355 /* ThirstySoftRegular.otf */; };
-		2CBD995D22E65B400041E177 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD995C22E65B400041E177 /* UIViewExtension.swift */; };
+		2CBD995D22E65B400041E177 /* UiExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBD995C22E65B400041E177 /* UiExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		2C16299B22D53DE0006C2867 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C30413B22D5408F00E26355 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		2C30413C22D5408F00E26355 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
-		2CBD995C22E65B400041E177 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		2CBD995C22E65B400041E177 /* UiExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,7 @@
 				2C16298F22D53DDF006C2867 /* AppDelegate.swift */,
 				2C16299122D53DDF006C2867 /* GridViewController.swift */,
 				2C16299322D53DDF006C2867 /* Main.storyboard */,
-				2CBD995C22E65B400041E177 /* UIViewExtension.swift */,
+				2CBD995C22E65B400041E177 /* UiExtension.swift */,
 				2C16299622D53DE0006C2867 /* Assets.xcassets */,
 				2C16299822D53DE0006C2867 /* LaunchScreen.storyboard */,
 				2C16299B22D53DE0006C2867 /* Info.plist */,
@@ -159,7 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CBD995D22E65B400041E177 /* UIViewExtension.swift in Sources */,
+				2CBD995D22E65B400041E177 /* UiExtension.swift in Sources */,
 				2C16299222D53DDF006C2867 /* GridViewController.swift in Sources */,
 				2C16299022D53DDF006C2867 /* AppDelegate.swift in Sources */,
 			);
