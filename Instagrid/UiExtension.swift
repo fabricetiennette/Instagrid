@@ -25,31 +25,12 @@ extension UIView {
 }
 
 extension UIView {
-    
-    func scale(by scale: CGFloat) {
-        self.contentScaleFactor = scale
-        for subview in self.subviews {
-            subview.scale(by: scale)
-        }
+    func animateAndMoveUiView(y: CGFloat, x: CGFloat) {
+        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+            self.transform = CGAffineTransform(translationX: x, y: y)
+            self.alpha = 0
+        })
     }
-    
-    func getImage(scale: CGFloat? = nil) -> UIImage {
-        let newScale = scale ?? UIScreen.main.scale
-        self.scale(by: newScale)
-        
-        let format = UIGraphicsImageRendererFormat()
-        format.scale = newScale
-        
-        let renderer = UIGraphicsImageRenderer(size: self.bounds.size, format: format)
-        
-        let image = renderer.image { rendererContext in
-            self.layer.render(in: rendererContext.cgContext)
-        }
-        return image
-    }
-}
-
-extension UIView {
     
     func animateUiViewBack() {
         UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
@@ -60,6 +41,12 @@ extension UIView {
 }
 
 extension UIStackView {
+    func animateAndMoveStackView(y: CGFloat, x: CGFloat) {
+        UIStackView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+            self.transform = CGAffineTransform(translationX: x, y: y)
+        })
+    }
+    
     func animateUiStackViewBack() {
         UIStackView.animate(withDuration: 0.9, delay: 0.1, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
             self.transform = .identity
