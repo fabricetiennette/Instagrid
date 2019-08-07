@@ -22,34 +22,21 @@ extension UIView {
         
         layer.add(flash, forKey: nil)
     }
-}
 
-extension UIView {
-    func animateAndMoveUiView(y: CGFloat, x: CGFloat) {
+    func animateAndMove(y: CGFloat, x: CGFloat) {
         UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
-            self.transform = CGAffineTransform(translationX: x, y: y)
-            self.alpha = 0
-        })
-    }
-    
-    func animateUiViewBack() {
-        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
-            self.transform = .identity
-            self.alpha = 1
-        })
-    }
-}
-
-extension UIStackView {
-    func animateAndMoveStackView(y: CGFloat, x: CGFloat) {
-        UIStackView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
             self.transform = CGAffineTransform(translationX: x, y: y)
         })
     }
     
-    func animateUiStackViewBack() {
-        UIStackView.animate(withDuration: 0.9, delay: 0.1, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
-            self.transform = .identity
+    func animateBack(x: CGFloat, y: CGFloat) {
+        if UIDevice.current.orientation.isLandscape {
+            self.transform = CGAffineTransform(translationX: x, y: y)
+        } else if UIDevice.current.orientation.isPortrait {
+            self.transform = CGAffineTransform(translationX: y, y: x)
+        }
+        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+                self.transform = .identity
         })
     }
 }
