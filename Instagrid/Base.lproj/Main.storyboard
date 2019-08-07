@@ -27,10 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCA-xi-g3B">
-                                <rect key="frame" x="128.5" y="30" width="118.5" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Pze-e4-lc2"/>
-                                </constraints>
+                                <rect key="frame" x="129" y="30" width="117" height="35"/>
                                 <fontDescription key="fontDescription" name="ThirstySoftRegular" family="Thirsty Soft" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -180,13 +177,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rG3-9I-XlX" userLabel="FrameSelection">
-                                <rect key="frame" x="25" y="577" width="325" height="80"/>
+                                <rect key="frame" x="25" y="641" width="325" height="16"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="CdA-ZT-KMS" userLabel="FrameSelectionStack">
-                                        <rect key="frame" x="0.0" y="0.0" width="325" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="16"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wup-Ij-w7j" userLabel="FirstButton">
-                                                <rect key="frame" x="0.0" y="0.0" width="95" height="80"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="95" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" backgroundImage="Layout 1"/>
                                                 <state key="selected" image="13" backgroundImage="Layout 1"/>
@@ -195,7 +192,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleAspectFit" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MFq-5D-Rhe" userLabel="SecondButton">
-                                                <rect key="frame" x="115" y="0.0" width="95" height="80"/>
+                                                <rect key="frame" x="115" y="0.0" width="95" height="16"/>
                                                 <state key="normal" backgroundImage="Layout 2"/>
                                                 <state key="selected" image="13" backgroundImage="Layout 2"/>
                                                 <connections>
@@ -203,7 +200,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoQ-Y2-bGb" userLabel="ThirdButton">
-                                                <rect key="frame" x="230" y="0.0" width="95" height="80"/>
+                                                <rect key="frame" x="230" y="0.0" width="95" height="16"/>
                                                 <state key="normal" backgroundImage="Layout 3"/>
                                                 <state key="selected" image="13" backgroundImage="Layout 3"/>
                                                 <connections>
@@ -224,14 +221,14 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="avx-qX-bSe" userLabel="SwipeToShare">
-                                <rect key="frame" x="107.5" y="117" width="160.5" height="49"/>
+                                <rect key="frame" x="82.5" y="109.5" width="210" height="56.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="flecheHaut" translatesAutoresizingMaskIntoConstraints="NO" id="bLZ-eX-pnk">
-                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="16"/>
                                         <variation key="heightClass=compact" image="flecheGauche"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lwl-P2-5A1">
-                                        <rect key="frame" x="0.0" y="20" width="160.5" height="29"/>
+                                        <rect key="frame" x="0.0" y="26" width="210" height="30.5"/>
                                         <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -283,6 +280,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="b4Q-Lw-s8J"/>
+                                <exclude reference="4Wa-Uo-jNi"/>
+                                <exclude reference="Rec-C4-ped"/>
+                                <exclude reference="x1u-Ds-JbY"/>
                                 <exclude reference="sTW-tN-FIn"/>
                                 <exclude reference="19W-2d-xXJ"/>
                                 <exclude reference="HWW-XW-Oay"/>
@@ -290,9 +290,6 @@
                                 <exclude reference="UBG-8a-KBb"/>
                                 <exclude reference="VTm-nB-lXj"/>
                                 <exclude reference="dEC-r0-Tm9"/>
-                                <exclude reference="4Wa-Uo-jNi"/>
-                                <exclude reference="Rec-C4-ped"/>
-                                <exclude reference="x1u-Ds-JbY"/>
                                 <exclude reference="7mU-AH-DaA"/>
                                 <exclude reference="Ani-dl-drL"/>
                                 <exclude reference="fGr-na-zdy"/>
@@ -304,6 +301,9 @@
                                 <exclude reference="HCp-h3-obH"/>
                                 <exclude reference="U2t-Ii-ysg"/>
                                 <include reference="b4Q-Lw-s8J"/>
+                                <include reference="4Wa-Uo-jNi"/>
+                                <exclude reference="CId-3U-DA6"/>
+                                <exclude reference="Rec-C4-ped"/>
                                 <include reference="sTW-tN-FIn"/>
                                 <include reference="19W-2d-xXJ"/>
                                 <include reference="HWW-XW-Oay"/>
@@ -315,9 +315,6 @@
                                 <exclude reference="dEC-r0-Tm9"/>
                                 <exclude reference="eIz-Sz-bNv"/>
                                 <exclude reference="fnk-mE-k2W"/>
-                                <include reference="4Wa-Uo-jNi"/>
-                                <exclude reference="CId-3U-DA6"/>
-                                <exclude reference="Rec-C4-ped"/>
                                 <include reference="7mU-AH-DaA"/>
                                 <include reference="Ani-dl-drL"/>
                                 <exclude reference="Db6-bU-zGl"/>
