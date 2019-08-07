@@ -40,10 +40,7 @@ class GridViewController: UIViewController {
     // Main photo frame view
     @IBOutlet private weak var photoFrameView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    // When the view is about to change viewWillLayoutSubviews get called and activate landscape et portrait changes
     override func viewWillLayoutSubviews() {
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe(gestureRecognizer:)))
         if UIApplication.shared.statusBarOrientation.isLandscape {
@@ -66,14 +63,14 @@ class GridViewController: UIViewController {
         if UIDevice.current.orientation.isPortrait {
             if gestureRecognizer.direction == .up {
                 // Animate swipeToShareStackView & photoFrameView by moving it off screen view
-                swipeToShareStackView.animateAndMoveStackView(y: -self.view.frame.height, x: 0)
-                photoFrameView.animateAndMoveUiView(y: -self.view.frame.height, x: 0)
+                swipeToShareStackView.animateAndMove(y: -self.view.frame.height, x: 0)
+                photoFrameView.animateAndMove(y: -self.view.frame.height, x: 0)
                 shareImage()
             }
         } else if UIDevice.current.orientation.isLandscape {
-            if gestureRecognizer.direction == .left {
-                swipeToShareStackView.animateAndMoveStackView(y: 0, x: -self.view.frame.width)
-                photoFrameView.animateAndMoveUiView(y: 0, x: -self.view.frame.width)
+            if gestureRecognizer.direction == .left { // swipe direction changed
+                swipeToShareStackView.animateAndMove(y: 0, x: -self.view.frame.width)
+                photoFrameView.animateAndMove(y: 0, x: -self.view.frame.width)
                 shareImage()
             }
         }
@@ -85,10 +82,10 @@ class GridViewController: UIViewController {
         let imageToShare = renderer.image { ctx in
             self.photoFrameView.drawHierarchy(in: self.photoFrameView.bounds, afterScreenUpdates: true)
         }
-        let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil) // share the image with an UIActivityViewController
+        let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
         shareActivity.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            self.swipeToShareStackView.animateUiStackViewBack(x: -self.view.frame.height, y: 0)
-            self.photoFrameView.animateUiViewBack(x: -self.view.frame.height, y: 0)
+            self.swipeToShareStackView.animateBack(x: -self.view.frame.height, y: 0)
+            self.photoFrameView.animateBack(x: -self.view.frame.height, y: 0)
         }
         present(shareActivity, animated: true, completion: nil)
     }
@@ -117,9 +114,12 @@ class GridViewController: UIViewController {
     }
 }
 
+// extension of class GridViewController comform to UINavigationControllerDelegate protocol
 extension GridViewController: UINavigationControllerDelegate {}
 
-// MARK: - ChooseImage method
+// MARK: - ImagePicker Protocol
+
+// extension of class GridViewController tell us when the user either selected a picture or cancelled the imagePicker
 extension GridViewController: UIImagePickerControllerDelegate {
     
     @IBAction func chooseImage(_ sender: UIButton) {
@@ -152,7 +152,7 @@ extension GridViewController: UIImagePickerControllerDelegate {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    // This method is use to pick the image and display in a ui image view
+    // This method is use to pick the image and display in a UIImageView
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
@@ -169,18 +169,9 @@ extension GridViewController: UIImagePickerControllerDelegate {
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
     // This method is use to select the appropriate image view to place your picture
     func buttonTapped(button: UIButton) {
-        switch button {
-        case button:
-            button.isSelected = true
-        default:
-            break;
-        }
+        button.isSelected = true
     }
     
     // This method is use to display an image and set his button transperant
