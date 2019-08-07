@@ -42,24 +42,21 @@ class GridViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipe(gestureRecognizer:)))
-        swipeGesture.direction = .up
-        swipeToShareStackView.addGestureRecognizer(swipeGesture)
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { context in
-            if UIApplication.shared.statusBarOrientation.isLandscape {
-                // activate landscape changes
-                let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe(gestureRecognizer:)))
-                swipeGesture.direction = .left
-                self.swipeToShareStackView.addGestureRecognizer(swipeGesture)
-                self.swipeLabel.text = "Swipe left to share"
-            } else {
-                // activate portrait changes
-                self.swipeLabel.text = "Swipe up to share"
-            }
-        })
+    override func viewWillLayoutSubviews() {
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe(gestureRecognizer:)))
+        if UIApplication.shared.statusBarOrientation.isLandscape {
+            // activate landscape changes
+            swipeGesture.direction = .left
+            self.swipeToShareStackView.addGestureRecognizer(swipeGesture)
+            self.swipeLabel.text = "Swipe left to share"
+        } else {
+            // activate portrait changes
+            swipeGesture.direction = .up
+            self.swipeToShareStackView.addGestureRecognizer(swipeGesture)
+            self.swipeLabel.text = "Swipe up to share"
+        }
     }
     
     // MARK: - Swipe to share method
@@ -69,12 +66,11 @@ class GridViewController: UIViewController {
         if UIDevice.current.orientation.isPortrait {
             if gestureRecognizer.direction == .up {
                 // Animate swipeToShareStackView & photoFrameView by moving it off screen view
-                swipeToShareStackView.animateAndMoveStackView(y: -self.view.frame.width, x: 0)
-                photoFrameView.animateAndMoveUiView(y: -self.view.frame.width, x: 0)
+                swipeToShareStackView.animateAndMoveStackView(y: -self.view.frame.height, x: 0)
+                photoFrameView.animateAndMoveUiView(y: -self.view.frame.height, x: 0)
                 shareImage()
             }
-        }
-        else if UIDevice.current.orientation.isLandscape {
+        } else if UIDevice.current.orientation.isLandscape {
             if gestureRecognizer.direction == .left {
                 swipeToShareStackView.animateAndMoveStackView(y: 0, x: -self.view.frame.width)
                 photoFrameView.animateAndMoveUiView(y: 0, x: -self.view.frame.width)
@@ -91,8 +87,8 @@ class GridViewController: UIViewController {
         }
         let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil) // share the image with an UIActivityViewController
         shareActivity.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            self.swipeToShareStackView.animateUiStackViewBack()
-            self.photoFrameView.animateUiViewBack()
+            self.swipeToShareStackView.animateUiStackViewBack(x: -self.view.frame.height, y: 0)
+            self.photoFrameView.animateUiViewBack(x: -self.view.frame.height, y: 0)
         }
         present(shareActivity, animated: true, completion: nil)
     }
