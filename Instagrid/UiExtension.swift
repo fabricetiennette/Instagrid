@@ -23,20 +23,20 @@ extension UIView {
         layer.add(flash, forKey: nil)
     }
 
-    func animateAndMove(y: CGFloat, x: CGFloat) {
-        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
+    func animateAndMove(x: CGFloat,y: CGFloat) {
+        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 1.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             self.transform = CGAffineTransform(translationX: x, y: y)
         })
     }
     
-    func animateBack(x: CGFloat, y: CGFloat) {
+    func animateBack(x: CGFloat, y: CGFloat, delay: Double) {
         if UIDevice.current.orientation.isLandscape {
             self.transform = CGAffineTransform(translationX: x, y: y)
         } else if UIDevice.current.orientation.isPortrait {
             self.transform = CGAffineTransform(translationX: y, y: x)
         }
-        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.9, options: .curveEaseIn, animations: {
-                self.transform = .identity
+        UIView.animate(withDuration: 0.9, delay: delay, usingSpringWithDamping: 1.5, initialSpringVelocity: 0.1, options: .curveEaseIn, animations: {
+            self.transform = .identity
         })
     }
 }
