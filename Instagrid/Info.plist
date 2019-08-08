@@ -41,14 +41,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Delm-Medium.otf</string>
-		<string>ThirstySoftRegular.otf</string>
-	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Instagrid need to access camera</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Instagrid need to access library</string>
 </dict>
 </plist>
