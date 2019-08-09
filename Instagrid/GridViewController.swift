@@ -66,14 +66,14 @@ class GridViewController: UIViewController {
         if UIDevice.current.orientation.isPortrait {
             if gestureRecognizer.direction == .up {
                 // Animate swipeToShareStackView & photoFrameView by moving it off screen view
-                swipeToShareStackView.animateAndMove(y: -self.view.frame.height, x: 0)
-                photoFrameView.animateAndMove(y: -self.view.frame.height, x: 0)
+                swipeToShareStackView.animateForward(y: -self.view.frame.height, x: 0)
+                photoFrameView.animateForward(y: -(self.view.frame.height+photoFrameView.frame.height)/2, x: 0)
                 shareImage()
             }
         } else if UIDevice.current.orientation.isLandscape {
             if gestureRecognizer.direction == .left {
-                swipeToShareStackView.animateAndMove(y: 0, x: -self.view.frame.width)
-                photoFrameView.animateAndMove(y: 0, x: -self.view.frame.width)
+                swipeToShareStackView.animateForward(y: 0, x: -self.view.frame.width)
+                photoFrameView.animateForward(y: 0, x: -(self.view.frame.width+photoFrameView.frame.width)/2)
                 shareImage()
             }
         }
@@ -87,8 +87,8 @@ class GridViewController: UIViewController {
         }
         let shareActivity = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil) // share the image with an UIActivityViewController
         shareActivity.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            self.swipeToShareStackView.animateBack(x: -self.view.frame.height, y: 0)
-            self.photoFrameView.animateBack(x: -self.view.frame.height, y: 0)
+            self.swipeToShareStackView.animateBack(x: -self.view.frame.height, y: 0, delay: 0.2)
+            self.photoFrameView.animateBack(x: -(self.view.frame.height+self.photoFrameView.frame.height)/2, y: 0, delay: 0)
         }
         present(shareActivity, animated: true, completion: nil)
     }
