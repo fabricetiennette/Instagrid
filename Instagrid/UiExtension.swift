@@ -24,7 +24,7 @@ extension UIView {
     }
 
     func animateAndMove(x: CGFloat,y: CGFloat) {
-        UIView.animate(withDuration: 0.9, delay: 0, usingSpringWithDamping: 1.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1.5, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
             self.transform = CGAffineTransform(translationX: x, y: y)
         })
     }
