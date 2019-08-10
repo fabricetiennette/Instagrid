@@ -42,6 +42,7 @@ class GridViewController: UIViewController {
 
     // When the view is about to change viewWillLayoutSubviews get called and activate landscape et portrait changes
     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipe(gestureRecognizer:)))
         if UIApplication.shared.statusBarOrientation.isLandscape {
             // activate landscape changes
