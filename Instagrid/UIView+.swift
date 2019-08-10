@@ -1,5 +1,5 @@
 //
-//  UIViewExtension.swift
+//  UIView+.swift
 //  Instagrid
 //
 //  Created by Fabrice Etiennette on 22/07/2019.
@@ -19,7 +19,6 @@ extension UIView {
         flash.toValue = 0.1
         flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         flash.autoreverses = true
-        
         layer.add(flash, forKey: nil)
     }
 
