@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GridViewController.swift
 //  Instagrid
 //
 //  Created by Fabrice Etiennette on 09/07/2019.
