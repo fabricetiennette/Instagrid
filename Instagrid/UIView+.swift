@@ -6,7 +6,6 @@
 //  Copyright © 2019 Fabrice Etiennette. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {
