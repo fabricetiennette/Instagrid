@@ -16,7 +16,7 @@ class GridViewController: UIViewController {
     @IBOutlet private weak var swipeToShareStackView: UIStackView!
     
     // SwipeLabel text
-    @IBOutlet weak var swipeLabel: UILabel!
+    @IBOutlet private weak var swipeLabel: UILabel!
     
     // Frame ImageView and Button
     @IBOutlet private weak var topLeftImageView: UIImageView!
@@ -90,29 +90,6 @@ class GridViewController: UIViewController {
         }
         present(shareActivity, animated: true, completion: nil)
     }
-    
-    // MARK: - Frame selection method
-    
-    //  This method is use to change frame when you tape on a button
-    @IBAction private func frameSelection(_ sender: UIButton) {
-        frameSelectionButtons.forEach {$0.isSelected = false} // Unselect all Buttons
-        sender.isSelected = true // select the button tapped to make the Nike layer appeared on
-        
-        switch sender.tag {
-        case 1:
-            gridViews[1].isHidden = true
-            gridViews[2].isHidden = false
-        case 2:
-            gridViews[1].isHidden = false
-            gridViews[2].isHidden = true
-        case 3:
-            gridViews[1].isHidden = false
-            gridViews[2].isHidden = false
-        default:
-            break;
-        }
-        photoFrameView.flashAnimation() // Animate the photoFrameView when select a new frame
-    }
 }
 
 // extension of class GridViewController comform to UINavigationControllerDelegate protocol
@@ -122,8 +99,28 @@ extension GridViewController: UINavigationControllerDelegate {}
 
 // extension of class GridViewController tell us when the user either selected a picture or cancelled the imagePicker
 extension GridViewController: UIImagePickerControllerDelegate {
+    // This method is use to pick the image and display in a UIImageView
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        
+        if topLeftButton.isSelected {
+            displayImage(image: image, imageView: topLeftImageView, button: topLeftButton)
+        } else if topRightButton.isSelected {
+            displayImage(image: image, imageView: topRightImageView, button: topRightButton)
+        } else if rightDownButton.isSelected  {
+            displayImage(image: image, imageView: rightDownImageView, button: rightDownButton)
+        } else if leftDownButton.isSelected  {
+            displayImage(image: image, imageView: leftDownImageView, button: leftDownButton)
+        }
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
+}
+
+private extension GridViewController {
     
-    @IBAction private func chooseImage(_ sender: UIButton) {
+    @IBAction func chooseImage(_ sender: UIButton) {
         buttonTapped(button: sender)
         
         // Create an imagePicker and provide it a delegate of UIImagePickerController
@@ -153,31 +150,36 @@ extension GridViewController: UIImagePickerControllerDelegate {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    // This method is use to pick the image and display in a UIImageView
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    // MARK: - Frame selection method
+    
+    //  This method is use to change frame when you tape on a button
+    @IBAction private func frameSelection(_ sender: UIButton) {
+        frameSelectionButtons.forEach {$0.isSelected = false} // Unselect all Buttons
+        sender.isSelected = true // select the button tapped to make the Nike layer appeared on
         
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        
-        if topLeftButton.isSelected {
-            displayImage(image: image, imageView: topLeftImageView, button: topLeftButton)
-        } else if topRightButton.isSelected {
-            displayImage(image: image, imageView: topRightImageView, button: topRightButton)
-        } else if rightDownButton.isSelected  {
-            displayImage(image: image, imageView: rightDownImageView, button: rightDownButton)
-        } else if leftDownButton.isSelected  {
-            displayImage(image: image, imageView: leftDownImageView, button: leftDownButton)
+        switch sender.tag {
+        case 1:
+            gridViews[1].isHidden = true
+            gridViews[2].isHidden = false
+        case 2:
+            gridViews[1].isHidden = false
+            gridViews[2].isHidden = true
+        case 3:
+            gridViews[1].isHidden = false
+            gridViews[2].isHidden = false
+        default:
+            break;
         }
-        picker.dismiss(animated: true, completion: nil)
-        
+        photoFrameView.flashAnimation() // Animate the photoFrameView when select a new frame
     }
     
     // This method is use to select the appropriate image view to place your picture
-    private func buttonTapped(button: UIButton) {
+    func buttonTapped(button: UIButton) {
         button.isSelected = true
     }
     
     // This method is use to display an image and set his button transperant
-    private func displayImage(image: UIImage, imageView: UIImageView, button: UIButton) {
+    func displayImage(image: UIImage, imageView: UIImageView, button: UIButton) {
         imageView.image = image
         button.alpha = 0.02
         button.isSelected = false
