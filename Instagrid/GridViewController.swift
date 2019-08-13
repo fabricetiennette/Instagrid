@@ -39,7 +39,7 @@ class GridViewController: UIViewController {
     
     // Main photo frame view
     @IBOutlet private weak var photoFrameView: UIView!
-
+    
     // When the view is about to change viewWillLayoutSubviews get called and activate landscape et portrait changes
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -133,17 +133,17 @@ extension GridViewController: UIImagePickerControllerDelegate {
         // Set my actionSheet with UIAlertController
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
         
-        // BONUS SourceType Possibility to choose picture directly from a shoot with the camera
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                imagePicker.sourceType = .camera
-                self.present(imagePicker, animated: true, completion: nil)
-            } else {
-                print("Camera not available") // if camera is not available it doesn't crash!
-            }
-        }))
+        // BONUS SourceType Possibility to choose picture directly from a shoot with the camera (if available)
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    imagePicker.sourceType = .camera
+                    self.present(imagePicker, animated: true, completion: nil)
+                }
+            }))
+        }
         
-        // Choose a pictures from Phone photoLibrary
+        // Choose a picture from phone photoLibrary
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in imagePicker.sourceType = .photoLibrary
             self.present(imagePicker, animated: true, completion: nil)
         }))
