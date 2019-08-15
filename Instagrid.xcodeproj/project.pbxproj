@@ -60,16 +60,48 @@
 		2C16298E22D53DDF006C2867 /* Instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				2C16298F22D53DDF006C2867 /* AppDelegate.swift */,
-				2C16299122D53DDF006C2867 /* GridViewController.swift */,
-				2CBD995C22E65B400041E177 /* UIView+.swift */,
-				2CE3DC1022FDAF5300CB7941 /* Main.storyboard */,
-				2C16299622D53DE0006C2867 /* Assets.xcassets */,
-				2C16299822D53DE0006C2867 /* LaunchScreen.storyboard */,
+				2C20A6532306130E00A71110 /* Supporting Files */,
+				2C20A652230612E200A71110 /* Model */,
+				2C20A651230612D100A71110 /* Controller */,
+				2C20A650230612A500A71110 /* View */,
 				2C16299B22D53DE0006C2867 /* Info.plist */,
-				2C30413A22D5408F00E26355 /* Fonts */,
 			);
 			path = Instagrid;
+			sourceTree = "<group>";
+		};
+		2C20A650230612A500A71110 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2CE3DC1022FDAF5300CB7941 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C20A651230612D100A71110 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2C16299122D53DDF006C2867 /* GridViewController.swift */,
+				2CBD995C22E65B400041E177 /* UIView+.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2C20A652230612E200A71110 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2C20A6532306130E00A71110 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2C16298F22D53DDF006C2867 /* AppDelegate.swift */,
+				2C16299622D53DE0006C2867 /* Assets.xcassets */,
+				2C16299822D53DE0006C2867 /* LaunchScreen.storyboard */,
+				2C30413A22D5408F00E26355 /* Fonts */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2C30413A22D5408F00E26355 /* Fonts */ = {

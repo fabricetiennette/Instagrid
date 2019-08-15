@@ -12,33 +12,23 @@ import Photos
 
 class GridViewController: UIViewController {
     
-    // Swipe to share StackView
+    // swipe outlets
     @IBOutlet private weak var swipeToShareStackView: UIStackView!
-    
-    // SwipeLabel text
     @IBOutlet private weak var swipeLabel: UILabel!
-    
     // Frame ImageView and Button
     @IBOutlet private weak var topLeftImageView: UIImageView!
     @IBOutlet private weak var topLeftButton: UIButton!
-    
     @IBOutlet private weak var topRightImageView: UIImageView!
     @IBOutlet private weak var topRightButton: UIButton!
-    
     @IBOutlet private weak var leftDownImageView: UIImageView!
     @IBOutlet private weak var leftDownButton: UIButton!
-    
     @IBOutlet private weak var rightDownImageView: UIImageView!
     @IBOutlet private weak var rightDownButton: UIButton!
-    
-    // Frame gridViews table
-    @IBOutlet private var gridViews: [UIView]!
-    
-    // frameSelectionButtons table
-    @IBOutlet private var frameSelectionButtons: [UIButton]!
-    
-    // Main photo frame view
+    // whole photoFrame view
     @IBOutlet private weak var photoFrameView: UIView!
+    // Frame gridViews and frame selection buttons table
+    @IBOutlet private var gridViews: [UIView]!
+    @IBOutlet private var frameSelectionButtons: [UIButton]!
     
     // When the view is about to change viewWillLayoutSubviews get called and activate landscape et portrait changes
     override func viewWillLayoutSubviews() {
@@ -92,10 +82,10 @@ class GridViewController: UIViewController {
     }
 }
 
+// MARK: - ImagePicker Protocol
+
 // extension of class GridViewController comform to UINavigationControllerDelegate protocol
 extension GridViewController: UINavigationControllerDelegate {}
-
-// MARK: - ImagePicker Protocol
 
 // extension of class GridViewController tell us when the user either selected a picture or cancelled the imagePicker
 extension GridViewController: UIImagePickerControllerDelegate {
@@ -118,8 +108,9 @@ extension GridViewController: UIImagePickerControllerDelegate {
     }
 }
 
+// Extension of GridViewController with my IBAction, actionSheet and frameSelection method
 private extension GridViewController {
-    
+    // This method is use when user select a frame to place an image inside
     @IBAction func chooseImage(_ sender: UIButton) {
         buttonTapped(button: sender)
         
