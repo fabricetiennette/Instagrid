@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Photos
-
 
 class GridViewController: UIViewController {
     
@@ -24,7 +22,7 @@ class GridViewController: UIViewController {
     @IBOutlet private weak var leftDownButton: UIButton!
     @IBOutlet private weak var rightDownImageView: UIImageView!
     @IBOutlet private weak var rightDownButton: UIButton!
-    // whole photoFrame view
+    // photoFrame view
     @IBOutlet private weak var photoFrameView: UIView!
     // Frame gridViews and frame selection buttons table
     @IBOutlet private var gridViews: [UIView]!
