@@ -61,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				2C20A6532306130E00A71110 /* Supporting Files */,
-				2C20A652230612E200A71110 /* Model */,
 				2C20A651230612D100A71110 /* Controller */,
 				2C20A650230612A500A71110 /* View */,
 				2C16299B22D53DE0006C2867 /* Info.plist */,
@@ -81,16 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				2C16299122D53DDF006C2867 /* GridViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		2C20A652230612E200A71110 /* Model */ = {
-			isa = PBXGroup;
-			children = (
 				2CBD995C22E65B400041E177 /* UIView+.swift */,
 			);
-			path = Model;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		2C20A6532306130E00A71110 /* Supporting Files */ = {
