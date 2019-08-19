@@ -81,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				2C16299122D53DDF006C2867 /* GridViewController.swift */,
-				2CBD995C22E65B400041E177 /* UIView+.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -89,6 +88,7 @@
 		2C20A652230612E200A71110 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2CBD995C22E65B400041E177 /* UIView+.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
