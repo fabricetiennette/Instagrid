@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-    // This animation is use to make more fluid the transition between frames
+    /// This animation is use to make more fluid the transition between frames
     func flashAnimation() {
         let flash = CABasicAnimation(keyPath: "opacity")
         

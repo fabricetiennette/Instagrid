@@ -48,7 +48,8 @@ class GridViewController: UIViewController {
     // MARK: - Swipe to share method
     
     // This method is use to interact with the swipe to share stack view with a gesture
-    @objc private func swipe(gestureRecognizer: UISwipeGestureRecognizer) {
+    @objc
+    private func swipe(gestureRecognizer: UISwipeGestureRecognizer) {
         if UIDevice.current.orientation.isPortrait {
             if gestureRecognizer.direction == .up {
                 // Animate swipeToShareStackView & photoFrameView by moving it off screen view
@@ -136,7 +137,7 @@ private extension GridViewController {
         
         // Cancel Action
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion: nil)
+        present(actionSheet, animated: true, completion: nil)
     }
     
     // MARK: - Frame selection method
