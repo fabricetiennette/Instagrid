@@ -66,7 +66,7 @@ class GridViewController: UIViewController {
         }
     }
     
-    // Get the image from the photoFrameView and share it with an UIActivityViewController
+    /// Get the image from the photoFrameView and share it with an UIActivityViewController
     private func shareImage() {
         let renderer = UIGraphicsImageRenderer(size: self.photoFrameView.bounds.size)
         let imageToShare = renderer.image { ctx in
@@ -163,12 +163,12 @@ private extension GridViewController {
         photoFrameView.flashAnimation() // Animate the photoFrameView when select a new frame
     }
     
-    // This method is use to select the appropriate image view to place your picture
+    /// This method is use to select the appropriate image view to place your picture
     func buttonTapped(button: UIButton) {
         button.isSelected = true
     }
     
-    // This method is use to display an image and set his button transperant
+    /// This method is use to display an image and set his button transperant
     func displayImage(image: UIImage, imageView: UIImageView, button: UIButton) {
         imageView.image = image
         button.alpha = 0.02
