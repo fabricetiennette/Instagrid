@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/fabricetiennette/Instagrid.svg?branch=master)](https://travis-ci.com/fabricetiennette/Instagrid)
+
 # Project 4 : Instagrid 
 
 ### A photo editing application.
